@@ -97,7 +97,7 @@ Please uninstall the "AI Collaboration Survival Guide" from our current workspac
 ## Dual License (MIT + CC BY-SA 4.0 · 100% Repo Coverage)
 
 - **Templates, Skills, Scripts, Guardrails, Benchmark Code/Data, CI & Repo Config** (`en|cn/{templates,skills,guardrails,scripts}/`, `research/{scripts,data}/`, `.github/{scripts,workflows}/`, `.github/CONTRIBUTING.md`, `.gitignore`, `.gitattributes`): [**MIT License**](../LICENSE) — drop straight into personal or commercial repos with zero copyleft friction; just keep attribution.
-- **Handbook Lessons, Empirical Papers, Cover Artwork & Guide Prose** (`en/handbook/`, `cn/handbook/`, `research/README.md`, `research/paper-*.md`, `.github/assets/`, `README.md`, `en/README.md`, `cn/README.md`): [**CC BY-SA 4.0**](../LICENSE-DOCS) — commercial use and private customization are welcome; ⚖️ **Publicly redistributing** modified versions of the handbook/lessons (including paid courses) **requires attribution and full open release under CC BY-SA 4.0**.
+- **Handbook Lessons, Empirical Papers, Figures, Cover Artwork & Guide Prose** (`en/handbook/`, `cn/handbook/`, `research/README.md`, `research/paper-*.md`, `research/assets/`, `.github/assets/`, `README.md`, `en/README.md`, `cn/README.md`): [**CC BY-SA 4.0**](../LICENSE-DOCS) — commercial use and private customization are welcome; ⚖️ **Publicly redistributing** modified versions of the handbook/lessons (including paid courses) **requires attribution and full open release under CC BY-SA 4.0**.
 
 ---
 

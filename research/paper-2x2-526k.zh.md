@@ -6,7 +6,10 @@
 >
 > - **受测模型**：`DeepSeek-V4.1-Flash`（API ID: `deepseek-flash`，`thinking={"type":"enabled"}`，`effort="max"`，零角色人设）
 > - **核心实验规模**：526K 上下文完整 2×2 全因子消融 **100 局**（4 组 × 5 题 × 5 次）；另独立报告前期 340K 上下文二元预实验 **50 局**（合计 **150 局**真实隔离 Git 沙箱自动化执行）
-> - **复现与核验材料（零密钥、全脱敏）**：[`run_ablation_526k.py`](scripts/run_ablation_526k.py) · [`verify_results.py`](scripts/verify_results.py) · [`run_512k_75trials.jsonl`](data/run_512k_75trials.jsonl) · [`run_512k_env_only_25trials.jsonl`](data/run_512k_env_only_25trials.jsonl) · [`run_340k_50trials.jsonl`](data/run_340k_50trials.jsonl)
+> - **复现与核验材料（零密钥、全脱敏）**：[`run_ablation_526k.py`](scripts/run_ablation_526k.py) · [`verify_results.py`](scripts/verify_results.py) · [`generate_figures.py`](scripts/generate_figures.py) · [`run_512k_75trials.jsonl`](data/run_512k_75trials.jsonl) · [`run_512k_env_only_25trials.jsonl`](data/run_512k_env_only_25trials.jsonl) · [`run_340k_50trials.jsonl`](data/run_340k_50trials.jsonl)
+
+> [!NOTE]
+> **工程实证定位声明（Non-Peer-Reviewed Engineering Study）**：本文系开源项目 [`ai-collaboration-survival-guide`](../README.md) 的工程实证研究报告，而非经学术同行评议的期刊论文。本实证仅基于单模型（`DeepSeek-V4.1-Flash`, `effort="max"`）与单宿主机（Windows 11 PowerShell 5.1）上的合成沙箱任务，结论不直接外推至其他模型家族或全部生产环境。全部 150 局脱敏原始日志、判分源码与离线复算脚本均已公开并接入三平台 CI 自动核验，欢迎直接运行 `python research/scripts/verify_results.py` 查账、提 Issue 质疑或提交跨模型复现 PR。
 
 ---
 
@@ -58,7 +61,7 @@
 1. **5 轮自然日常闲聊**（饮食、降温、抽卡、笔记本风扇、周末计划），构造真实非任务语义干扰；
 2. **8 轮无关归档代码审阅批次**，将首轮 `prompt_tokens` 精准拉升至 **~526K–527K tokens**。
 
-**KV Prefix Cache 测量口径**：直接读取 DeepSeek API 每步返回的 `usage.prompt_cache_hit_tokens` 与 `usage.prompt_tokens`，按条件组聚合计算 $\sum \text{cache\_hit\_tokens} / \sum \text{prompt\_tokens}$。由于每组首局首步存在冷启动 cache miss（单局最低约 `80.0%`），经首局预热后后续 24 局全部稳定在 `>99.9%`，四组聚合总缓存命中率实测精确为：`bare` **`99.96%`**（83.80M / 83.84M）、`env_only` **`99.35%`**（85.45M / 86.01M）、`lite_hook` **`99.25%`**（73.88M / 74.44M）、`full_kit` **`99.25%`**（73.93M / 74.49M）。全部 100 局 526K 实验总 API 花费为 **`¥8.46 CNY`**。
+**KV Prefix Cache 测量口径**：直接读取 DeepSeek API 每步返回的 `usage.prompt_cache_hit_tokens` 与 `usage.prompt_tokens`，按条件组聚合计算 `sum(prompt_cache_hit_tokens) / sum(prompt_tokens)`。由于每组首局首步存在冷启动 cache miss（单局最低约 `80.0%`），经首局预热后后续 24 局全部稳定在 `>99.9%`，四组聚合总缓存命中率实测精确为：`bare` **`99.96%`**（83.80M / 83.84M）、`env_only` **`99.35%`**（85.45M / 86.01M）、`lite_hook` **`99.25%`**（73.88M / 74.44M）、`full_kit` **`99.25%`**（73.93M / 74.49M）。全部 100 局 526K 实验总 API 花费为 **`¥8.46 CNY`**。
 
 ### 2.3 五项全陷阱覆盖的客观判分任务（T1–T5）
 每个 trial 在全新 `tempfile.mkdtemp` 目录中以 `git init` 建立独立基线，全部采用脚本客观判分（零主观人工评分）。**特别说明（事前设计分母口径）**：全部 5 道任务在代码层面均埋设了明确的恶性越界触发器（并非仅 `T3`/`T5` 具备翻车条件），因此主表严格按事前设计的全任务有效局（`50 vs 48`）作为分母，杜绝按事后翻车题型倒推缩分母的统计偏差：
@@ -79,6 +82,10 @@
 ---
 
 ## 3. 实证结果与统计分析（Empirical Results）
+
+![图 1：526K 上下文 2×2 全因子消融正交双分离结果（含 95% Wilson 置信区间）](assets/double-dissociation-526k.svg)
+
+<sub>*图 1：左栏展示因子 A（规则书 + Hook）对恶性安全越界率的独立抑制（`12.0% → 0.0%`, $p=0.0268$）；右栏展示因子 B（环境自画像）对零 PS5 踩坑局占比的独立提升（`2.0% → 42.0%`, $p=9.42 \times 10^{-7}$）。图表由 [`generate_figures.py`](scripts/generate_figures.py) 直接从原始 JSONL 自动绘制，误差线为 95% Wilson 置信区间。*</sub>
 
 ### 3.1 核心 526K 2×2 全因子汇总表（$N = 100$ 局）
 

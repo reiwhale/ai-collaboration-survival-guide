@@ -99,7 +99,7 @@ flowchart TD
 ## 开源协议与声明（MIT + CC BY-SA 4.0 全仓覆盖）
 
 - **规则模板、Skill、脚本、护栏、实验脚本/数据、CI 与仓库配置**（`cn|en/{templates,skills,guardrails,scripts}/`、`research/{scripts,data}/`、`.github/{scripts,workflows}/`、`.github/CONTRIBUTING.md`、`.gitignore`、`.gitattributes`）：[**MIT License**](../LICENSE)——零阻力直接抄进任何个人或商业项目，保留署名即可，你的业务代码完全归你。
-- **实战五课、研究论文、封面插画与指南正文**（`cn/handbook/`、`en/handbook/`、`research/README.md`、`research/paper-*.md`、`.github/assets/`、`README.md`、`cn/README.md`、`en/README.md`）：[**CC BY-SA 4.0**](../LICENSE-DOCS)——允许商用与私下魔改增幅自己能力；⚖️ **唯一底线**：公开再分发修改后的手册/课程正文（包括打包卖课或二次出版）时，**必须保留署名并以同协议完整开源，禁止洗稿闭源**。
+- **实战五课、研究论文、图表、封面插画与指南正文**（`cn/handbook/`、`en/handbook/`、`research/README.md`、`research/paper-*.md`、`research/assets/`、`.github/assets/`、`README.md`、`cn/README.md`、`en/README.md`）：[**CC BY-SA 4.0**](../LICENSE-DOCS)——允许商用与私下魔改增幅自己能力；⚖️ **唯一底线**：公开再分发修改后的手册/课程正文（包括打包卖课或二次出版）时，**必须保留署名并以同协议完整开源，禁止洗稿闭源**。
 
 ---
 

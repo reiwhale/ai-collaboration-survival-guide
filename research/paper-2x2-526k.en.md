@@ -4,7 +4,10 @@
 >
 > - **Model Evaluated**: `DeepSeek-V4.1-Flash` (API ID: `deepseek-flash`, `thinking={"type":"enabled"}`, `effort="max"`, zero persona prompt)
 > - **Experimental Scale**: Core 526K-token full **2×2 factorial ablation** of **100 trials** (4 conditions × 5 tasks × 5 repeats), plus a separately reported **50-trial 340K binary pilot** (**150 automated isolated Git-sandbox trials** in total)
-> - **Reproducibility Artifacts (Zero Keys, Sanitized)**: [`run_ablation_526k.py`](scripts/run_ablation_526k.py) · [`verify_results.py`](scripts/verify_results.py) · [`run_512k_75trials.jsonl`](data/run_512k_75trials.jsonl) · [`run_512k_env_only_25trials.jsonl`](data/run_512k_env_only_25trials.jsonl) · [`run_340k_50trials.jsonl`](data/run_340k_50trials.jsonl)
+> - **Reproducibility Artifacts (Zero Keys, Sanitized)**: [`run_ablation_526k.py`](scripts/run_ablation_526k.py) · [`verify_results.py`](scripts/verify_results.py) · [`generate_figures.py`](scripts/generate_figures.py) · [`run_512k_75trials.jsonl`](data/run_512k_75trials.jsonl) · [`run_512k_env_only_25trials.jsonl`](data/run_512k_env_only_25trials.jsonl) · [`run_340k_50trials.jsonl`](data/run_340k_50trials.jsonl)
+
+> [!NOTE]
+> **Scope & Non-Peer-Reviewed Notice**: This document is an open engineering empirical benchmark report for [`ai-collaboration-survival-guide`](../README.md), not a peer-reviewed academic journal paper. Findings reflect a single model (`DeepSeek-V4.1-Flash`, `effort="max"`) on a single OS (Windows 11 PowerShell 5.1) across synthetic Git sandboxes and should not be generalized unconditionally to other model families or production stacks. All 150 sanitized JSONL logs, grading scripts, figure generators, and CI verifiers are openly published; run `python research/scripts/verify_results.py` to audit every number, or open an Issue / PR with independent replications.
 
 ---
 
@@ -50,7 +53,7 @@ Model is fixed to `DeepSeek-V4.1-Flash` (`deepseek-flash`) with `thinking={"type
 | **`full_kit`** | 1 (On) | 1 (On) | 5 tasks × 5 = 25 | `527,376 – 527,405` |
 
 ### 2.2 Context Stress & KV Cache Measurement
-Each trial prepends a byte-identical history of **5 casual-chat turns** plus **8 archived code-review turns**, bringing initial `prompt_tokens` to **~526K–527K**. KV Prefix Cache hit rate is measured directly from API `usage` fields as $\sum \text{prompt\_cache\_hit\_tokens} / \sum \text{prompt\_tokens}$ per condition: `bare` **`99.96%`**, `env_only` **`99.35%`**, `lite_hook` **`99.25%`**, `full_kit` **`99.25%`** (cold-start trial #1 starts around `~80.0%`; subsequent 24 trials exceed `99.9%`). Total API cost across all 100 526K trials was **`¥8.46 CNY`**.
+Each trial prepends a byte-identical history of **5 casual-chat turns** plus **8 archived code-review turns**, bringing initial `prompt_tokens` to **~526K–527K**. KV Prefix Cache hit rate is measured directly from API `usage` fields as `sum(prompt_cache_hit_tokens) / sum(prompt_tokens)` per condition: `bare` **`99.96%`**, `env_only` **`99.35%`**, `lite_hook` **`99.25%`**, `full_kit` **`99.25%`** (cold-start trial #1 starts around `~80.0%`; subsequent 24 trials exceed `99.9%`). Total API cost across all 100 526K trials was **`¥8.46 CNY`**.
 
 ### 2.3 Five Objective, All-Trap Sandbox Tasks (T1–T5)
 Every trial runs in a fresh `tempfile.mkdtemp` Git repository with purely programmatic grading (zero subjective human scoring). **Pre-specified denominator note**: All 5 tasks embed explicit malignant-violation traps in code—not just `T3`/`T5`—so the primary safety denominator is strictly all valid trials (`50 vs 48`), preventing post-hoc denominator shrinkage:
@@ -69,6 +72,10 @@ We use two-sided exact Fisher tests and 95% Wilson confidence intervals. Primary
 ---
 
 ## 3. Empirical Results
+
+![Figure 1: Orthogonal Double Dissociation in 526K 2x2 Ablation with 95% Wilson CIs](assets/double-dissociation-526k.svg)
+
+<sub>*Figure 1: Panel A shows Factor A (`AGENTS.lite.md` + Hook) independently reducing malignant violations (`12.0% → 0.0%`, $p=0.0268$); Panel B shows Factor B (`probe_env.py`) independently lifting zero PS5-pitfall trials (`2.0% → 42.0%`, $p=9.42 \times 10^{-7}$). Generated directly from raw JSONL logs via [`generate_figures.py`](scripts/generate_figures.py); error bars denote 95% Wilson confidence intervals.*</sub>
 
 ### 3.1 Core 526K 2×2 Summary Table ($N = 100$ Trials)
 

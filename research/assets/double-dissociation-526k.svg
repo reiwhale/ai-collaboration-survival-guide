@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 440" width="980" height="440" role="img" aria-label="2x2 Factorial Orthogonal Double Dissociation at 526K Context">
+<defs>
+  <style>
+    .bg { fill: #ffffff; stroke: #d0d7de; stroke-width: 1.5; }
+    .title { font: 700 17px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: #1f2328; }
+    .subtitle { font: 400 12px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: #57606a; }
+    .panel-title { font: 700 14px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: #1f2328; }
+    .panel-sub { font: 400 11.5px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: #57606a; }
+    .axis-label { font: 600 11.5px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: #24292f; }
+    .tick { font: 400 11px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: #6e7781; }
+    .bar-val { font: 700 11.5px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: #1f2328; }
+    .badge-txt { font: 600 11px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .grid { stroke: #eaeef2; stroke-width: 1; }
+    .axis { stroke: #8c959f; stroke-width: 1.2; }
+    .err { stroke: #24292f; stroke-width: 1.6; stroke-linecap: round; }
+    .foot { font: 400 11px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: #6e7781; }
+  </style>
+</defs>
+<rect class="bg" x="1" y="1" width="978" height="438" rx="12" />
+<text class="title" x="30" y="34">Orthogonal Double Dissociation in 526K-Token 2x2 Ablation (DeepSeek-V4.1-Flash, effort=max)</text>
+<text class="subtitle" x="30" y="53">Factor A (2.0 KB AGENTS.lite.md + Hook) governs safety; Factor B (probe_env.py) governs PowerShell 5.1 ergonomics. Error bars = 95% Wilson CI.</text>
+<text class="panel-title" x="62" y="86">Panel A: Malignant Safety Violations (Lower is Better)</text>
+<text class="panel-sub" x="62" y="102">526K 2x2 valid scored trials (N=98; full_kit N=23 due to 2 eval timeouts)</text>
+<line class="grid" x1="62" y1="352.0" x2="457" y2="352.0" />
+<text class="tick" x="54" y="356.0" text-anchor="end">0%</text>
+<line class="grid" x1="62" y1="298.7" x2="457" y2="298.7" />
+<text class="tick" x="54" y="302.7" text-anchor="end">10%</text>
+<line class="grid" x1="62" y1="245.3" x2="457" y2="245.3" />
+<text class="tick" x="54" y="249.3" text-anchor="end">20%</text>
+<line class="grid" x1="62" y1="192.0" x2="457" y2="192.0" />
+<text class="tick" x="54" y="196.0" text-anchor="end">30%</text>
+<line class="grid" x1="62" y1="138.7" x2="457" y2="138.7" />
+<text class="tick" x="54" y="142.7" text-anchor="end">40%</text>
+<line class="axis" x1="62" y1="112" x2="62" y2="352" />
+<line class="axis" x1="62" y1="352" x2="457" y2="352" />
+<rect x="85.4" y="288.0" width="52" height="64.0" rx="4" fill="#d9534f" fill-opacity="0.88" />
+<line class="err" x1="111.4" y1="192.2" x2="111.4" y2="329.8" />
+<line class="err" x1="104.4" y1="192.2" x2="118.4" y2="192.2" />
+<line class="err" x1="104.4" y1="329.8" x2="118.4" y2="329.8" />
+<text class="bar-val" x="111.4" y="184.2" text-anchor="middle">12.0% (3/25)</text>
+<text class="axis-label" x="111.4" y="370" text-anchor="middle">bare</text>
+<text class="tick" x="111.4" y="385" text-anchor="middle">(Rule 0, Env 0)</text>
+<rect x="184.1" y="288.0" width="52" height="64.0" rx="4" fill="#e67e22" fill-opacity="0.88" />
+<line class="err" x1="210.1" y1="192.2" x2="210.1" y2="329.8" />
+<line class="err" x1="203.1" y1="192.2" x2="217.1" y2="192.2" />
+<line class="err" x1="203.1" y1="329.8" x2="217.1" y2="329.8" />
+<text class="bar-val" x="210.1" y="184.2" text-anchor="middle">12.0% (3/25)</text>
+<text class="axis-label" x="210.1" y="370" text-anchor="middle">env_only</text>
+<text class="tick" x="210.1" y="385" text-anchor="middle">(Rule 0, Env 1)</text>
+<rect x="282.9" y="349.0" width="52" height="3" rx="1.5" fill="#2da44e" />
+<line class="err" x1="308.9" y1="281.0" x2="308.9" y2="352.0" />
+<line class="err" x1="301.9" y1="281.0" x2="315.9" y2="281.0" />
+<line class="err" x1="301.9" y1="352.0" x2="315.9" y2="352.0" />
+<text class="bar-val" x="308.9" y="273.0" text-anchor="middle">0.0% (0/25)</text>
+<text class="axis-label" x="308.9" y="370" text-anchor="middle">lite_hook</text>
+<text class="tick" x="308.9" y="385" text-anchor="middle">(Rule 1, Env 0)</text>
+<rect x="381.6" y="349.0" width="52" height="3" rx="1.5" fill="#0969da" />
+<line class="err" x1="407.6" y1="275.7" x2="407.6" y2="352.0" />
+<line class="err" x1="400.6" y1="275.7" x2="414.6" y2="275.7" />
+<line class="err" x1="400.6" y1="352.0" x2="414.6" y2="352.0" />
+<text class="bar-val" x="407.6" y="267.7" text-anchor="middle">0.0% (0/23)</text>
+<text class="axis-label" x="407.6" y="370" text-anchor="middle">full_kit</text>
+<text class="tick" x="407.6" y="385" text-anchor="middle">(Rule 1, Env 1)</text>
+<rect x="70" y="120" width="379" height="22" rx="5" fill="#dafbe1" />
+<text class="badge-txt" x="259.5" y="135" text-anchor="middle" fill="#116329">Factor A (Rule): 12.0% (6/50) -> 0.0% (0/48), Fisher p = 0.0268 (Holm pass)</text>
+<rect x="70" y="146" width="379" height="22" rx="5" fill="#f6f8fa" />
+<text class="badge-txt" x="259.5" y="161" text-anchor="middle" fill="#57606a">Factor B (Env): 6.0% (3/50) vs 6.2% (3/48), Fisher p = 1.0000 (n.s.)</text>
+<text class="panel-title" x="542" y="86">Panel B: Zero PS5-Pitfall Trials (Higher is Better)</text>
+<text class="panel-sub" x="542" y="102">526K 2x2 full completed agent trajectories (N=100; Policy A, 25/group)</text>
+<line class="grid" x1="542" y1="352.0" x2="947" y2="352.0" />
+<text class="tick" x="534" y="356.0" text-anchor="end">0%</text>
+<line class="grid" x1="542" y1="295.5" x2="947" y2="295.5" />
+<text class="tick" x="534" y="299.5" text-anchor="end">20%</text>
+<line class="grid" x1="542" y1="239.1" x2="947" y2="239.1" />
+<text class="tick" x="534" y="243.1" text-anchor="end">40%</text>
+<line class="grid" x1="542" y1="182.6" x2="947" y2="182.6" />
+<text class="tick" x="534" y="186.6" text-anchor="end">60%</text>
+<line class="grid" x1="542" y1="126.1" x2="947" y2="126.1" />
+<text class="tick" x="534" y="130.1" text-anchor="end">80%</text>
+<line class="axis" x1="542" y1="112" x2="542" y2="352" />
+<line class="axis" x1="542" y1="352" x2="947" y2="352" />
+<rect x="566.6" y="340.7" width="52" height="11.3" rx="4" fill="#8c959f" fill-opacity="0.88" />
+<line class="err" x1="592.6" y1="296.8" x2="592.6" y2="350.0" />
+<line class="err" x1="585.6" y1="296.8" x2="599.6" y2="296.8" />
+<line class="err" x1="585.6" y1="350.0" x2="599.6" y2="350.0" />
+<text class="bar-val" x="592.6" y="288.8" text-anchor="middle">4.0% (1/25)</text>
+<text class="axis-label" x="592.6" y="370" text-anchor="middle">bare</text>
+<text class="tick" x="592.6" y="385" text-anchor="middle">(Rule 0, Env 0)</text>
+<rect x="667.9" y="227.8" width="52" height="124.2" rx="4" fill="#1f883d" fill-opacity="0.88" />
+<line class="err" x1="693.9" y1="174.3" x2="693.9" y2="276.7" />
+<line class="err" x1="686.9" y1="174.3" x2="700.9" y2="174.3" />
+<line class="err" x1="686.9" y1="276.7" x2="700.9" y2="276.7" />
+<text class="bar-val" x="693.9" y="166.3" text-anchor="middle">44.0% (11/25)</text>
+<text class="axis-label" x="693.9" y="370" text-anchor="middle">env_only</text>
+<text class="tick" x="693.9" y="385" text-anchor="middle">(Rule 0, Env 1)</text>
+<rect x="769.1" y="349.0" width="52" height="3" rx="1.5" fill="#8c959f" />
+<line class="err" x1="795.1" y1="314.4" x2="795.1" y2="352.0" />
+<line class="err" x1="788.1" y1="314.4" x2="802.1" y2="314.4" />
+<line class="err" x1="788.1" y1="352.0" x2="802.1" y2="352.0" />
+<text class="bar-val" x="795.1" y="306.4" text-anchor="middle">0.0% (0/25)</text>
+<text class="axis-label" x="795.1" y="370" text-anchor="middle">lite_hook</text>
+<text class="tick" x="795.1" y="385" text-anchor="middle">(Rule 1, Env 0)</text>
+<rect x="870.4" y="239.1" width="52" height="112.9" rx="4" fill="#0969da" fill-opacity="0.88" />
+<line class="err" x1="896.4" y1="184.7" x2="896.4" y2="285.9" />
+<line class="err" x1="889.4" y1="184.7" x2="903.4" y2="184.7" />
+<line class="err" x1="889.4" y1="285.9" x2="903.4" y2="285.9" />
+<text class="bar-val" x="896.4" y="176.7" text-anchor="middle">40.0% (10/25)</text>
+<text class="axis-label" x="896.4" y="370" text-anchor="middle">full_kit</text>
+<text class="tick" x="896.4" y="385" text-anchor="middle">(Rule 1, Env 1)</text>
+<rect x="550" y="120" width="389" height="22" rx="5" fill="#ddf4ff" />
+<text class="badge-txt" x="744.5" y="135" text-anchor="middle" fill="#0550ae">Factor B (Env): 2.0% (1/50) -> 42.0% (21/50), +40.0 pp, p = 9.42e-7</text>
+<rect x="550" y="146" width="389" height="22" rx="5" fill="#f6f8fa" />
+<text class="badge-txt" x="744.5" y="161" text-anchor="middle" fill="#57606a">env_only vs full_kit: 44.0% vs 40.0% (p = 1.0000; 1-trial noise)</text>
+<text class="foot" x="30" y="422">Source: research/data/run_512k_*.jsonl (reproducible via python research/scripts/verify_results.py) | Separate 340K pilot (unpooled): Rule=0 24.0% (6/25) vs Rule=1 0.0% (0/24), p = 0.0223.</text>
+</svg>

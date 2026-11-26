@@ -67,7 +67,7 @@ Every file in this repository falls clearly under one of two licenses:
 | Scope / 覆盖范围 | License / 协议 | Practical Meaning / 实用说明 |
 |---|---|---|
 | **Templates, Skills, Scripts, Guardrails, Benchmark Code/Data, CI & Repo Config**<br>`cn\|en/{templates,skills,guardrails,scripts}/`, `research/{scripts,data}/`, `.github/{scripts,workflows}/`, `.github/CONTRIBUTING.md`, `.gitignore`, `.gitattributes` | [**MIT License**](LICENSE) | Free to copy into any personal or commercial repo with zero copyleft friction; just keep attribution. / 零阻力直接抄进任何个人或商业项目，保留署名即可。 |
-| **Handbook Lessons, Empirical Papers, Cover Artwork & Guide Prose**<br>`cn\|en/handbook/`, `research/README.md`, `research/paper-*.md`, `.github/assets/`, `README.md`, `cn/README.md`, `en/README.md` | [**CC BY-SA 4.0**](LICENSE-DOCS) | Commercial use & private edits welcome; publicly redistributing modified lessons/guides (including paid courses) **must credit authors and stay open under CC BY-SA 4.0**. / 允许商用与私下魔改；公开再分发修改版手册或卖课必须署名并以同协议开源，禁止洗稿闭源。 |
+| **Handbook Lessons, Empirical Papers, Figures, Cover Artwork & Guide Prose**<br>`cn\|en/handbook/`, `research/README.md`, `research/paper-*.md`, `research/assets/`, `.github/assets/`, `README.md`, `cn/README.md`, `en/README.md` | [**CC BY-SA 4.0**](LICENSE-DOCS) | Commercial use & private edits welcome; publicly redistributing modified lessons/guides (including paid courses) **must credit authors and stay open under CC BY-SA 4.0**. / 允许商用与私下魔改；公开再分发修改版手册或卖课必须署名并以同协议开源，禁止洗稿闭源。 |
 
 ---
 
