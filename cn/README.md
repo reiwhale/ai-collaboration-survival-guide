@@ -92,7 +92,7 @@ flowchart TD
 ## 实测环境、实证研究与跨平台诚实边界
 
 - **已真机实测与 150 局公开复现数据**：**Windows 11（Python 状态机引擎 + PowerShell 5.1 + Git Bash + 无 Python 纯壳兜底）**——运行 `python cn/guardrails/hooks/tests/run_hook_tests.py`（[`run_hook_tests.py`](guardrails/hooks/tests/run_hook_tests.py)），涵盖红队穿透变体、高频合法防误拦、64 KB 防死锁、UTF-8 BOM / 畸形 JSON 协议与公开绕过基线，**741 项断言 `0` 失败**；另已在 **[`research/`](../research/README.md)** 完整开源基于 `DeepSeek-V4.1-Flash`（`effort=max`）的 **526K 上下文 2×2 全因子消融研究论文（100 局 + 独立 340K 预实验 50 局）**、全部 150 局脱敏 JSONL 原始日志与一键离线复算脚本（`python research/scripts/verify_results.py`，零 API 费用）。
-- **macOS / Linux 验证边界**：脚本已采用跨平台零依赖 Python 核心 + 严格 POSIX `awk` 兜底（兼容 macOS BSD 工具链），并由三平台 GitHub Actions 工作流（[`.github/workflows/hook-tests.yml`](../.github/workflows/hook-tests.yml)）在 `ubuntu-latest` / `macos-15` / `windows-latest` 强制执行全部 741 项 Hook 断言与 `verify_results.py` 数据/阳性对照复算，**但未经作者本地 Mac/Linux 真机跑测**。Mac/Linux 用户启用拦截前请务必按 [`guardrails/hooks/README.md`](guardrails/hooks/README.md) 完成本地自检 + Claude Code 真实接线验收。
+- **macOS / Linux 验证边界**：脚本已采用跨平台零依赖 Python 核心 + 严格 POSIX `awk` 兜底（兼容 macOS BSD 工具链），并由三平台 GitHub Actions 工作流（[`.github/workflows/hook-tests.yml`](../.github/workflows/hook-tests.yml)）在 `ubuntu-latest` / `macos-15-intel` / `windows-latest` 强制执行全部 741 项 Hook 断言与 `verify_results.py` 数据/阳性对照复算，**但未经作者本地 Mac/Linux 真机跑测**。Mac/Linux 用户启用拦截前请务必按 [`guardrails/hooks/README.md`](guardrails/hooks/README.md) 完成本地自检 + Claude Code 真实接线验收。
 
 ---
 
