@@ -1,0 +1,39 @@
+name: Hook & Mirror Sync CI
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ windows-latest, ubuntu-latest, macos-latest ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify cn/ and en/ shared hook files stay byte-identical
+        run: python .github/scripts/verify_mirrors.py
+      - name: Run guardrail hook test suite (en/)
+        if: runner.os == 'Windows'
+        run: python en/guardrails/hooks/tests/run_hook_tests.py --require-ps --require-bash
+      - name: Run guardrail hook test suite (cn/)
+        if: runner.os == 'Windows'
+        run: python cn/guardrails/hooks/tests/run_hook_tests.py --require-ps --require-bash
+      - name: Run guardrail hook test suite (en/, Unix)
+        if: runner.os != 'Windows'
+        run: python en/guardrails/hooks/tests/run_hook_tests.py --require-bash
+      - name: Run guardrail hook test suite (cn/, Unix)
+        if: runner.os != 'Windows'
+        run: python cn/guardrails/hooks/tests/run_hook_tests.py --require-bash
+      - name: Smoke-test host environment probes (dry-run)
+        run: |
+          python en/scripts/probe_env.py --dry-run
+          python cn/scripts/probe_env.py --dry-run

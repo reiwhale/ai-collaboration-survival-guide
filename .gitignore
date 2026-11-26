@@ -1,0 +1,37 @@
+# AI 协同生存指南 · Git 忽略规则
+# 核心原则：本机私有环境画像与凭据绝对禁止入库！
+
+# ── 本机私有环境档案（由 probe_env / Agent 自动生成，绝不提交）──
+.agent-env.local.txt
+*.local.txt
+*.local.md
+*.local.json
+*.local.py
+
+# ── 环境变量与密钥凭据 ──────────────────────────────────────────
+.env
+.env.*
+!.env.example
+.credentials*
+*.key
+*.pem
+*.token
+
+# ── 编辑器 / 操作系统临时文件 ───────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.swp
+*~
+
+# ── 运行缓存与依赖产物 ──────────────────────────────────────────
+__pycache__/
+*.pyc
+node_modules/
+
+# ── 本地备份残骸与待清空回收盒 ──────────────────────────────────
+_trash_box/
+*.bak
+*.bak-*
+*.orig
