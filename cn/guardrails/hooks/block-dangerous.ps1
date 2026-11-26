@@ -15,6 +15,14 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
+function Read-StdinUtf8 {
+  $utf8 = New-Object System.Text.UTF8Encoding($false)
+  $reader = New-Object System.IO.StreamReader([Console]::OpenStandardInput(), $utf8)
+  $text = $reader.ReadToEnd()
+  if ($null -eq $text) { return "" }
+  return $text.TrimStart([char]0xFEFF)
+}
+
 # Fast path: delegate to sibling block-dangerous.py when Python is available (unless disabled for fallback tests)
 $pyEngine = Join-Path $PSScriptRoot "block-dangerous.py"
 if (($env:GUARDRAIL_DISABLE_PYTHON -ne '1') -and (Test-Path -LiteralPath $pyEngine)) {
@@ -31,7 +39,7 @@ if (($env:GUARDRAIL_DISABLE_PYTHON -ne '1') -and (Test-Path -LiteralPath $pyEngi
       & $pyBin -B $pyEngine --dialect ps --test $TestCommand
       exit $LASTEXITCODE
     } else {
-      $rawStdin = [Console]::In.ReadToEnd()
+      $rawStdin = Read-StdinUtf8
       $psi = New-Object System.Diagnostics.ProcessStartInfo
       $psi.FileName = $pyBin
       $psi.Arguments = "-B `"$pyEngine`" --dialect ps"
@@ -59,7 +67,7 @@ if (($env:GUARDRAIL_DISABLE_PYTHON -ne '1') -and (Test-Path -LiteralPath $pyEngi
 # Fallback path (pure PowerShell when Python is not installed)
 $cmd = $TestCommand
 if ([string]::IsNullOrEmpty($cmd)) {
-  $raw = [Console]::In.ReadToEnd()
+  $raw = Read-StdinUtf8
   if (-not [string]::IsNullOrWhiteSpace($raw)) {
     try {
       $obj = $raw | ConvertFrom-Json

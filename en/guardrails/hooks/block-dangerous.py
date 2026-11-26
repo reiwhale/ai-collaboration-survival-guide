@@ -24,6 +24,8 @@ import re
 import sys
 from dataclasses import dataclass
 
+if hasattr(sys.stdin, "reconfigure"):
+    sys.stdin.reconfigure(encoding="utf-8-sig", errors="replace")
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 if hasattr(sys.stderr, "reconfigure"):
@@ -95,6 +97,7 @@ CONTROL_KEYWORDS = {"if", "then", "elif", "else", "fi", "do", "done", "for", "wh
 
 def extract_command(raw_stdin: str) -> str:
     """Extract command string from Claude Code JSON stdin or fall back safely."""
+    raw_stdin = raw_stdin.lstrip("\ufeff")
     text = raw_stdin.strip()
     if not text:
         return ""
@@ -735,7 +738,10 @@ def check_segment(
 
 def inspect_command(cmd: str, dialect: str = "auto", depth: int = 0) -> str | None:
     """Analyze a full command string and return the first matched block reason, or None."""
-    if not cmd or not cmd.strip():
+    if not cmd:
+        return None
+    cmd = cmd.lstrip("\ufeff")
+    if not cmd.strip():
         return None
     ps_mode = dialect == "ps"
     cleaned = strip_heredocs(cmd)

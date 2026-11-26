@@ -9,7 +9,7 @@
 [![Code & Templates: MIT](https://img.shields.io/badge/Code_%26_Templates-MIT-blue.svg)](LICENSE)
 [![Handbook: CC BY-SA 4.0](https://img.shields.io/badge/Handbook-CC_BY--SA_4.0-lightgrey.svg)](LICENSE-DOCS)
 ![Lite Rules](https://img.shields.io/badge/Lite-2.0_KB_%2F_12_lines-blue)
-![Hooks](https://img.shields.io/badge/Hooks-738_assertions_%7C_0_failures-brightgreen)
+![Hooks](https://img.shields.io/badge/Hooks-741_assertions_%7C_0_failures-brightgreen)
 
 <h3>
   <a href="cn/README.md">🇨🇳 进入简体中文版（Chinese Edition）</a>
@@ -21,9 +21,9 @@
 
 ---
 
-A **~2.0 KB / 12-line zero-friction rule kit** + self-contained **Agent Skill** + **5 practical lessons** + **cross-platform PreToolUse speed-bump hooks** (zero-dependency Python lexer + POSIX `awk` / PowerShell fallbacks, verified by 738 automated assertions) for safe human-AI coding collaboration.
+A **~2.0 KB / 12-line zero-friction rule kit** + self-contained **Agent Skill** + **5 practical lessons** + **cross-platform PreToolUse speed-bump hooks** (zero-dependency Python lexer + POSIX `awk` / PowerShell fallbacks, verified by 741 automated assertions) for safe human-AI coding collaboration.
 
-一套 **约 2.0 KB / 12 行零磨擦防翻车规则** + 独立自包含 **Agent Skill** + **五堂人机对齐实战课** + **跨平台终端防手滑钩子**（零依赖 Python 状态机核心 + POSIX `awk` / PowerShell 自动兜底，738 项自动化断言实测 0 失败）。
+一套 **约 2.0 KB / 12 行零磨擦防翻车规则** + 独立自包含 **Agent Skill** + **五堂人机对齐实战课** + **跨平台终端防手滑钩子**（零依赖 Python 状态机核心 + POSIX `awk` / PowerShell 自动兜底，741 项自动化断言实测 0 失败）。
 
 ## Directory Overview · 目录总览
 
@@ -34,7 +34,7 @@ A **~2.0 KB / 12-line zero-friction rule kit** + self-contained **Agent Skill** 
 │   ├── handbook/         人机协同实战五课（对齐 / 排错 / 后悔药 / 防糊弄 / 审计）
 │   ├── templates/        AGENTS.lite.md（~2.0 KB）、Strict、LESSONS、MODEL_FIT
 │   ├── skills/           中文自包含 Agent Skill（skills/ai-survival-guard/SKILL.md）
-│   ├── guardrails/       Git 保命速查表 + 跨平台 Hook（py/ps1/sh）+ 样例 + 738 断言测试集
+│   ├── guardrails/       Git 保命速查表 + 跨平台 Hook（py/ps1/sh）+ 样例 + 741 断言测试集
 │   └── scripts/          宿主机环境只读探测脚本（probe_env.py）
 │
 ├── en/                 🇺🇸 Self-contained English Edition -> en/README.md

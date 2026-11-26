@@ -91,7 +91,7 @@ flowchart TD
 
 ## 实测环境与跨平台诚实边界
 
-- **已真机实测**：**Windows 11（Python 状态机引擎 + PowerShell 5.1 + Git Bash + 无 Python 纯壳兜底）**——在仓库根目录运行 `python cn/guardrails/hooks/tests/run_hook_tests.py`（[`run_hook_tests.py`](guardrails/hooks/tests/run_hook_tests.py)），涵盖红队穿透变体、高频合法防误拦、64 KB 防死锁、畸形 JSON 协议与公开绕过基线，**738 项断言 `0` 失败**；另含作者团队基于 **Claude Opus 5.5 High** 与 **DeepSeek-V4.1-Flash** 的自测检验（尚未公开第三方复现日志）。
+- **已真机实测**：**Windows 11（Python 状态机引擎 + PowerShell 5.1 + Git Bash + 无 Python 纯壳兜底）**——在仓库根目录运行 `python cn/guardrails/hooks/tests/run_hook_tests.py`（[`run_hook_tests.py`](guardrails/hooks/tests/run_hook_tests.py)），涵盖红队穿透变体、高频合法防误拦、64 KB 防死锁、UTF-8 BOM / 畸形 JSON 协议与公开绕过基线，**741 项断言 `0` 失败**；另含作者团队基于 **Claude Opus 5.5 High** 与 **DeepSeek-V4.1-Flash** 的自测检验（尚未公开第三方复现日志）。
 - **macOS / Linux 验证边界**：脚本已采用跨平台零依赖 Python 核心 + 严格 POSIX `awk` 兜底（兼容 macOS BSD 工具链），并由三平台 GitHub Actions 工作流（[`.github/workflows/hook-tests.yml`](../.github/workflows/hook-tests.yml)）在 `ubuntu-latest` / `macos-latest` / `windows-latest` 强制执行，**但未经作者本地 Mac/Linux 真机跑测**。Mac/Linux 用户启用拦截前请务必按 [`guardrails/hooks/README.md`](guardrails/hooks/README.md) 完成本地自检 + Claude Code 真实接线验收。
 
 ---

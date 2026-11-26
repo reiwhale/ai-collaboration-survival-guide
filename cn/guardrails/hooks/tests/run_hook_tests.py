@@ -221,12 +221,12 @@ def run_py(cmd, dialect="ps", mode="stdin"):
         payload = json.dumps({"tool_name": "Bash", "tool_input": {"command": cmd}})
         p = subprocess.run(
             [sys.executable, "-B", str(PY_PATH), "--dialect", dialect],
-            input=payload, text=True, capture_output=True, timeout=15,
+            input=payload, text=True, encoding="utf-8", errors="replace", capture_output=True, timeout=15,
         )
     else:
         p = subprocess.run(
             [sys.executable, "-B", str(PY_PATH), "--dialect", dialect, "--test", cmd],
-            text=True, capture_output=True, timeout=15,
+            text=True, encoding="utf-8", errors="replace", capture_output=True, timeout=15,
         )
     return p.returncode
 
@@ -236,12 +236,12 @@ def run_ps1(cmd, mode="stdin", disable_py=False):
         payload = json.dumps({"tool_name": "Bash", "tool_input": {"command": cmd}})
         p = subprocess.run(
             ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(PS1_PATH)],
-            input=payload, text=True, capture_output=True, timeout=20, env=_env(disable_py),
+            input=payload, text=True, encoding="utf-8", errors="replace", capture_output=True, timeout=20, env=_env(disable_py),
         )
     else:
         p = subprocess.run(
             ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(PS1_PATH), "-TestCommand", cmd],
-            text=True, capture_output=True, timeout=20, env=_env(disable_py),
+            text=True, encoding="utf-8", errors="replace", capture_output=True, timeout=20, env=_env(disable_py),
         )
     return p.returncode
 
@@ -251,12 +251,12 @@ def run_sh(bash_exe, cmd, mode="stdin", disable_py=False):
         payload = json.dumps({"tool_name": "Bash", "tool_input": {"command": cmd}})
         p = subprocess.run(
             [bash_exe, str(SH_PATH)],
-            input=payload, text=True, capture_output=True, timeout=20, env=_env(disable_py),
+            input=payload, text=True, encoding="utf-8", errors="replace", capture_output=True, timeout=20, env=_env(disable_py),
         )
     else:
         p = subprocess.run(
             [bash_exe, str(SH_PATH), "--test", cmd],
-            text=True, capture_output=True, timeout=20, env=_env(disable_py),
+            text=True, encoding="utf-8", errors="replace", capture_output=True, timeout=20, env=_env(disable_py),
         )
     return p.returncode
 
@@ -264,7 +264,7 @@ def run_sh(bash_exe, cmd, mode="stdin", disable_py=False):
 def run_raw_stdin(runner_cmd, raw_input, disable_py=False):
     p = subprocess.run(
         runner_cmd,
-        input=raw_input, text=True, capture_output=True, timeout=20, env=_env(disable_py),
+        input=raw_input, text=True, encoding="utf-8", errors="replace", capture_output=True, timeout=20, env=_env(disable_py),
     )
     return p.returncode
 
@@ -333,6 +333,7 @@ def main():
     large_payload = json.dumps({"tool_name": "Bash", "tool_input": {"command": "echo " + ("A" * 70000) + " && rm -rf *.py"}})
     proto_cases = [
         ("large-64kb-block", large_payload, "B"),
+        ("utf8-bom-json-block", "\ufeff" + json.dumps({"tool_name": "Bash", "tool_input": {"command": "rm -rf *.py"}}), "B"),
         ("raw-non-json-block", "rm -rf *.py", "B"),
         ("truncated-json-block", '{"tool_name": "Bash", "tool_input": {"command": "rm -rf *.py', "B"),
         ("empty-stdin-pass", "", "P"),
