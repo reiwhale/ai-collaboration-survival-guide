@@ -37,3 +37,5 @@ jobs:
         run: |
           python en/scripts/probe_env.py --dry-run
           python cn/scripts/probe_env.py --dry-run
+      - name: Verify 150-trial research dataset & Hook positive controls
+        run: python research/scripts/verify_results.py

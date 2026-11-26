@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src=".github/assets/cover.png" alt="True??? All Done! Boos! — AI Collaboration Survival Guide Cover" width="760" />
+
 # 🛟 AI Collaboration Survival Guide · AI 协同生存指南
 
 **"When your AI says 'All tests passed!', that is the exact moment to double-check."**  
@@ -10,11 +12,14 @@
 [![Handbook: CC BY-SA 4.0](https://img.shields.io/badge/Handbook-CC_BY--SA_4.0-lightgrey.svg)](LICENSE-DOCS)
 ![Lite Rules](https://img.shields.io/badge/Lite-2.0_KB_%2F_12_lines-blue)
 ![Hooks](https://img.shields.io/badge/Hooks-741_assertions_%7C_0_failures-brightgreen)
+[![Research](https://img.shields.io/badge/Research-526K_2x2_Ablation_%28150_trials%29-purple)](research/README.md)
 
 <h3>
   <a href="cn/README.md">🇨🇳 进入简体中文版（Chinese Edition）</a>
   &nbsp;&nbsp;·&nbsp;&nbsp;
   <a href="en/README.md">🇺🇸 Read in English（English Edition）</a>
+  &nbsp;&nbsp;·&nbsp;&nbsp;
+  <a href="research/README.md">🔬 研究报告与复现（Empirical Research）</a>
 </h3>
 
 </div>
@@ -45,9 +50,14 @@ A **~2.0 KB / 12-line zero-friction rule kit** + self-contained **Agent Skill** 
 │   ├── guardrails/       Git undo cheatsheet + cross-platform hooks (py/ps1/sh) + examples + tests
 │   └── scripts/          Read-only host environment probe (probe_env.py)
 │
-├── .github/            Contributing guide, mirror-sync check & 3-OS GitHub Actions CI
+├── research/           🔬 526K 2×2 消融实证研究报告与 150 局复现包 -> research/README.md
+│   ├── paper-2x2-526k.{zh,en}.md   中英双语完整实证论文（含 8 篇参考文献）
+│   ├── scripts/        脱敏复现脚本（run_ablation_526k.py）与一键离线验真（verify_results.py）
+│   └── data/           150 局全脱敏原始 JSONL 实验日志（~190 KB）
+│
+├── .github/            Contributing guide, cover artwork, mirror-sync check & 3-OS CI
 ├── LICENSE             MIT License (standard unmodified text)
-└── LICENSE-DOCS        CC BY-SA 4.0 (handbook lessons & guide prose)
+└── LICENSE-DOCS        CC BY-SA 4.0 (handbook lessons, papers, artwork & guide prose)
 ```
 
 ## Dual License · 双协议全覆盖声明
@@ -56,8 +66,8 @@ Every file in this repository falls clearly under one of two licenses:
 
 | Scope / 覆盖范围 | License / 协议 | Practical Meaning / 实用说明 |
 |---|---|---|
-| **Templates, Skills, Scripts, Guardrails, CI & Repo Config**<br>`cn\|en/{templates,skills,guardrails,scripts}/`, `.github/`, `.gitignore`, `.gitattributes` | [**MIT License**](LICENSE) | Free to copy into any personal or commercial repo with zero copyleft friction; just keep attribution. / 零阻力直接抄进任何个人或商业项目，保留署名即可。 |
-| **Handbook Lessons & Guide Prose**<br>`cn\|en/handbook/`, `README.md`, `cn/README.md`, `en/README.md` | [**CC BY-SA 4.0**](LICENSE-DOCS) | Commercial use & private edits welcome; publicly redistributing modified lessons/guides (including paid courses) **must credit authors and stay open under CC BY-SA 4.0**. / 允许商用与私下魔改；公开再分发修改版手册或卖课必须署名并以同协议开源，禁止洗稿闭源。 |
+| **Templates, Skills, Scripts, Guardrails, Benchmark Code/Data, CI & Repo Config**<br>`cn\|en/{templates,skills,guardrails,scripts}/`, `research/{scripts,data}/`, `.github/{scripts,workflows}/`, `.github/CONTRIBUTING.md`, `.gitignore`, `.gitattributes` | [**MIT License**](LICENSE) | Free to copy into any personal or commercial repo with zero copyleft friction; just keep attribution. / 零阻力直接抄进任何个人或商业项目，保留署名即可。 |
+| **Handbook Lessons, Empirical Papers, Cover Artwork & Guide Prose**<br>`cn\|en/handbook/`, `research/README.md`, `research/paper-*.md`, `.github/assets/`, `README.md`, `cn/README.md`, `en/README.md` | [**CC BY-SA 4.0**](LICENSE-DOCS) | Commercial use & private edits welcome; publicly redistributing modified lessons/guides (including paid courses) **must credit authors and stay open under CC BY-SA 4.0**. / 允许商用与私下魔改；公开再分发修改版手册或卖课必须署名并以同协议开源，禁止洗稿闭源。 |
 
 ---
 

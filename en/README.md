@@ -14,7 +14,7 @@ A zero-friction **~2.0 KB / 12-line rule kit** + self-contained **[English Agent
 ![Lite template](https://img.shields.io/badge/Lite-2.0_KB_%2F_12_lines-blue)
 ![Hooks](https://img.shields.io/badge/Hooks-Python_%7C_Bash_%7C_PS1-orange)
 
-**[🍼 One-Click Prompt](#one-click-install--uninstall-prompts)** · **[📖 5 Practical Lessons](#five-practical-lessons-for-humans)** · **[🛡️ Install Hooks](guardrails/hooks/README.md)** · **[🧪 Model Fit](templates/MODEL_FIT.md)**
+**[🍼 One-Click Prompt](#one-click-install--uninstall-prompts)** · **[📖 5 Practical Lessons](#five-practical-lessons-for-humans)** · **[🔬 526K Empirical Study](../research/paper-2x2-526k.en.md)** · **[🛡️ Install Hooks](guardrails/hooks/README.md)** · **[🧪 Model Fit](templates/MODEL_FIT.md)**
 
 </div>
 
@@ -87,17 +87,17 @@ Please uninstall the "AI Collaboration Survival Guide" from our current workspac
 
 ---
 
-## Tested Platforms & Honest Boundaries
+## Tested Platforms, Empirical Study & Honest Boundaries
 
-- **Verified on Hardware**: **Windows 11 (Python lexer engine + PowerShell 5.1 + Git Bash + no-Python shell fallback)** — run `python en/guardrails/hooks/tests/run_hook_tests.py` ([`run_hook_tests.py`](guardrails/hooks/tests/run_hook_tests.py)) from repo root: **741 assertions covering red-team bypasses, false-positive guards, 64 KB deadlock checks, UTF-8 BOM / malformed JSON, and documented bypasses: `0` failures**, plus author-run canary tests on **Claude Opus 5.5 High** and **DeepSeek-V4.1-Flash** *(no third-party replication logs published yet)*.
-- **macOS / Linux Verification Scope**: Hooks use the cross-platform zero-dependency Python lexer plus a portable POSIX `awk` fallback (compatible with macOS BSD tools), verified via the 3-OS GitHub Actions workflow ([`.github/workflows/hook-tests.yml`](../.github/workflows/hook-tests.yml)) on `ubuntu-latest`, `macos-latest`, and `windows-latest`, **but were not executed on the authors' local Mac/Linux hardware**. Complete both local and live Claude Code checks in [`guardrails/hooks/README.md`](guardrails/hooks/README.md) before trusting the speed bump.
+- **Verified on Hardware & 150-Trial Open Dataset**: **Windows 11 (Python lexer engine + PowerShell 5.1 + Git Bash + no-Python shell fallback)** — run `python en/guardrails/hooks/tests/run_hook_tests.py` ([`run_hook_tests.py`](guardrails/hooks/tests/run_hook_tests.py)) from repo root: **741 assertions covering red-team bypasses, false-positive guards, 64 KB deadlock checks, UTF-8 BOM / malformed JSON, and documented bypasses: `0` failures**. Full empirical benchmark artifacts on `DeepSeek-V4.1-Flash` (`effort="max"`)—our **526K-token 2×2 factorial paper (100 trials + separate 50-trial 340K pilot)**, all 150 sanitized JSONL logs, and a zero-cost offline verifier (`python research/scripts/verify_results.py`)—are published in **[`research/`](../research/README.md)**.
+- **macOS / Linux Verification Scope**: Hooks use the cross-platform zero-dependency Python lexer plus a portable POSIX `awk` fallback (compatible with macOS BSD tools), verified via the 3-OS GitHub Actions workflow ([`.github/workflows/hook-tests.yml`](../.github/workflows/hook-tests.yml)) on `ubuntu-latest`, `macos-latest`, and `windows-latest` (including all 741 Hook assertions and `verify_results.py`), **but were not executed on the authors' local Mac/Linux hardware**. Complete both local and live Claude Code checks in [`guardrails/hooks/README.md`](guardrails/hooks/README.md) before trusting the speed bump.
 
 ---
 
 ## Dual License (MIT + CC BY-SA 4.0 · 100% Repo Coverage)
 
-- **Templates, Skills, Scripts, Guardrails, CI & Repo Config** (`en|cn/{templates,skills,guardrails,scripts}/`, `.github/`, `.gitignore`, `.gitattributes`): [**MIT License**](../LICENSE) — drop straight into personal or commercial repos with zero copyleft friction; just keep attribution.
-- **Handbook Lessons & Guide Prose** (`en/handbook/`, `cn/handbook/`, `README.md`, `en/README.md`, `cn/README.md`): [**CC BY-SA 4.0**](../LICENSE-DOCS) — commercial use and private customization are welcome; ⚖️ **Publicly redistributing** modified versions of the handbook/lessons (including paid courses) **requires attribution and full open release under CC BY-SA 4.0**.
+- **Templates, Skills, Scripts, Guardrails, Benchmark Code/Data, CI & Repo Config** (`en|cn/{templates,skills,guardrails,scripts}/`, `research/{scripts,data}/`, `.github/{scripts,workflows}/`, `.github/CONTRIBUTING.md`, `.gitignore`, `.gitattributes`): [**MIT License**](../LICENSE) — drop straight into personal or commercial repos with zero copyleft friction; just keep attribution.
+- **Handbook Lessons, Empirical Papers, Cover Artwork & Guide Prose** (`en/handbook/`, `cn/handbook/`, `research/README.md`, `research/paper-*.md`, `.github/assets/`, `README.md`, `en/README.md`, `cn/README.md`): [**CC BY-SA 4.0**](../LICENSE-DOCS) — commercial use and private customization are welcome; ⚖️ **Publicly redistributing** modified versions of the handbook/lessons (including paid courses) **requires attribution and full open release under CC BY-SA 4.0**.
 
 ---
 

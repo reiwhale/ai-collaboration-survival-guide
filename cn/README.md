@@ -16,7 +16,7 @@
 ![Lite template](https://img.shields.io/badge/Lite-2.0_KB_%2F_12_lines-blue)
 ![Hooks](https://img.shields.io/badge/Hooks-Python_%7C_Bash_%7C_PS1-orange)
 
-**[🍼 一键挂载提示词](#一键挂载与卸载提示词)** · **[📖 实战五课](#人机协同实战五课给人看)** · **[🛡️ 硬护栏配置](guardrails/hooks/README.md)** · **[🧪 模型适配表](templates/MODEL_FIT.md)**
+**[🍼 一键挂载提示词](#一键挂载与卸载提示词)** · **[📖 实战五课](#人机协同实战五课给人看)** · **[🔬 526K 实证研究报告](../research/paper-2x2-526k.zh.md)** · **[🛡️ 硬护栏配置](guardrails/hooks/README.md)** · **[🧪 模型适配表](templates/MODEL_FIT.md)**
 
 </div>
 
@@ -89,17 +89,17 @@ flowchart TD
 
 ---
 
-## 实测环境与跨平台诚实边界
+## 实测环境、实证研究与跨平台诚实边界
 
-- **已真机实测**：**Windows 11（Python 状态机引擎 + PowerShell 5.1 + Git Bash + 无 Python 纯壳兜底）**——在仓库根目录运行 `python cn/guardrails/hooks/tests/run_hook_tests.py`（[`run_hook_tests.py`](guardrails/hooks/tests/run_hook_tests.py)），涵盖红队穿透变体、高频合法防误拦、64 KB 防死锁、UTF-8 BOM / 畸形 JSON 协议与公开绕过基线，**741 项断言 `0` 失败**；另含作者团队基于 **Claude Opus 5.5 High** 与 **DeepSeek-V4.1-Flash** 的自测检验（尚未公开第三方复现日志）。
-- **macOS / Linux 验证边界**：脚本已采用跨平台零依赖 Python 核心 + 严格 POSIX `awk` 兜底（兼容 macOS BSD 工具链），并由三平台 GitHub Actions 工作流（[`.github/workflows/hook-tests.yml`](../.github/workflows/hook-tests.yml)）在 `ubuntu-latest` / `macos-latest` / `windows-latest` 强制执行，**但未经作者本地 Mac/Linux 真机跑测**。Mac/Linux 用户启用拦截前请务必按 [`guardrails/hooks/README.md`](guardrails/hooks/README.md) 完成本地自检 + Claude Code 真实接线验收。
+- **已真机实测与 150 局公开复现数据**：**Windows 11（Python 状态机引擎 + PowerShell 5.1 + Git Bash + 无 Python 纯壳兜底）**——运行 `python cn/guardrails/hooks/tests/run_hook_tests.py`（[`run_hook_tests.py`](guardrails/hooks/tests/run_hook_tests.py)），涵盖红队穿透变体、高频合法防误拦、64 KB 防死锁、UTF-8 BOM / 畸形 JSON 协议与公开绕过基线，**741 项断言 `0` 失败**；另已在 **[`research/`](../research/README.md)** 完整开源基于 `DeepSeek-V4.1-Flash`（`effort=max`）的 **526K 上下文 2×2 全因子消融研究论文（100 局 + 独立 340K 预实验 50 局）**、全部 150 局脱敏 JSONL 原始日志与一键离线复算脚本（`python research/scripts/verify_results.py`，零 API 费用）。
+- **macOS / Linux 验证边界**：脚本已采用跨平台零依赖 Python 核心 + 严格 POSIX `awk` 兜底（兼容 macOS BSD 工具链），并由三平台 GitHub Actions 工作流（[`.github/workflows/hook-tests.yml`](../.github/workflows/hook-tests.yml)）在 `ubuntu-latest` / `macos-latest` / `windows-latest` 强制执行全部 741 项 Hook 断言与 `verify_results.py` 数据/阳性对照复算，**但未经作者本地 Mac/Linux 真机跑测**。Mac/Linux 用户启用拦截前请务必按 [`guardrails/hooks/README.md`](guardrails/hooks/README.md) 完成本地自检 + Claude Code 真实接线验收。
 
 ---
 
 ## 开源协议与声明（MIT + CC BY-SA 4.0 全仓覆盖）
 
-- **规则模板、Skill、脚本、护栏、CI 与仓库配置**（`cn|en/{templates,skills,guardrails,scripts}/`、`.github/`、`.gitignore`、`.gitattributes`）：[**MIT License**](../LICENSE)——零阻力直接抄进任何个人或商业项目，保留署名即可，你的业务代码完全归你。
-- **实战五课与指南正文**（`cn/handbook/`、`en/handbook/`、`README.md`、`cn/README.md`、`en/README.md`）：[**CC BY-SA 4.0**](../LICENSE-DOCS)——允许商用与私下魔改增幅自己能力；⚖️ **唯一底线**：公开再分发修改后的手册/课程正文（包括打包卖课或二次出版）时，**必须保留署名并以同协议完整开源，禁止洗稿闭源**。
+- **规则模板、Skill、脚本、护栏、实验脚本/数据、CI 与仓库配置**（`cn|en/{templates,skills,guardrails,scripts}/`、`research/{scripts,data}/`、`.github/{scripts,workflows}/`、`.github/CONTRIBUTING.md`、`.gitignore`、`.gitattributes`）：[**MIT License**](../LICENSE)——零阻力直接抄进任何个人或商业项目，保留署名即可，你的业务代码完全归你。
+- **实战五课、研究论文、封面插画与指南正文**（`cn/handbook/`、`en/handbook/`、`research/README.md`、`research/paper-*.md`、`.github/assets/`、`README.md`、`cn/README.md`、`en/README.md`）：[**CC BY-SA 4.0**](../LICENSE-DOCS)——允许商用与私下魔改增幅自己能力；⚖️ **唯一底线**：公开再分发修改后的手册/课程正文（包括打包卖课或二次出版）时，**必须保留署名并以同协议完整开源，禁止洗稿闭源**。
 
 ---
 
